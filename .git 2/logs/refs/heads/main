@@ -1,0 +1,5 @@
+0000000000000000000000000000000000000000 086f8dcbc4d600f5f269d71dcdda6d50184475ad TaniaFigueiredo <contact@freshstartdev.com> 1751896083 +0100	commit (initial): Initialize project using Create React App
+086f8dcbc4d600f5f269d71dcdda6d50184475ad d8e84c29466fe62f8c5c7ac02f125a0e7f72651f TaniaFigueiredo <contact@freshstartdev.com> 1751900614 +0100	commit: Primeiro commit do projeto React
+d8e84c29466fe62f8c5c7ac02f125a0e7f72651f d8e84c29466fe62f8c5c7ac02f125a0e7f72651f TaniaFigueiredo <contact@freshstartdev.com> 1751901583 +0100	Branch: renamed refs/heads/main to refs/heads/main
+d8e84c29466fe62f8c5c7ac02f125a0e7f72651f 5b7b21cdd9e3edfa6fd1b80949e8a38901e04dff TaniaFigueiredo <contact@freshstartdev.com> 1751902032 +0100	commit: git add package.json package-lock.json
+5b7b21cdd9e3edfa6fd1b80949e8a38901e04dff b1a7592b33c9130539195ea075e67f84c67824cb TaniaFigueiredo <contact@freshstartdev.com> 1751902194 +0100	commit: git commit -am "Remoção de submódulo mal configurado"

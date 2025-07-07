@@ -1,43 +1,54 @@
-import React, { useState } from "react";
-import axios from "axios";
+import React, { useEffect, useState } from "react";
+import Header from "./Header";
+import Main from "./Main";
+import Footer from "./Footer";
+import "./App.css";
 
 export default function App() {
-  const [city, setCity] = useState("");
-  const [temperature, setTemperature] = useState(null);
+  const [city, setCity] = useState("Leiria");
 
-  function handleSubmit(event) {
-    event.preventDefault();
+  useEffect(() => {
+    const toggleButton = document.getElementById("dark-mode-toggle");
 
-    const apiKey = "8c78e9e7e9928cd1a2a6f923072c3dec";
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark");
 
-    axios.get(apiUrl).then((response) => {
-      setTemperature(response.data.main.temp);
-    });
-  }
+      const logo = document.querySelector(".logo");
+      if (document.body.classList.contains("dark")) {
+        logo.setAttribute(
+          "src",
+          "https://s3.amazonaws.com/shecodesio-production/uploads/files/000/166/410/original/Logo_sem_fundo.png?1747936347"
+        );
+        toggleButton.textContent = "Light Mode";
+      } else {
+        logo.setAttribute(
+          "src",
+          "https://s3.amazonaws.com/shecodesio-production/uploads/files/000/166/413/original/Logo_fundo_branco.png?1747937312"
+        );
+        toggleButton.textContent = "Dark Mode";
+      }
+    }
 
-  function updateCity(event) {
-    setCity(event.target.value);
+    if (toggleButton) {
+      toggleButton.addEventListener("click", toggleDarkMode);
+    }
+
+    return () => {
+      if (toggleButton) {
+        toggleButton.removeEventListener("click", toggleDarkMode);
+      }
+    };
+  }, []);
+
+  function handleCityChange(newCity) {
+    setCity(newCity);
   }
 
   return (
-    <div className="App">
-      <h1>Weather App</h1>
-
-      <form onSubmit={handleSubmit}>
-        <input
-          type="search"
-          placeholder="Enter a city..."
-          onChange={updateCity}
-        />
-        <button type="submit">Search</button>
-      </form>
-
-      {temperature !== null && (
-        <h2>
-          The temperature in {city} is {Math.round(temperature)}°C
-        </h2>
-      )}
+    <div className="container">
+      <Header onCityChange={handleCityChange} />
+      <Main city={city} />
+      <Footer />
     </div>
   );
 }
