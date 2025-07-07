@@ -225,7 +225,6 @@ header {
   text-align: right;
 }
 
-/* 🔁 Botão para alternar entre ºC e ºF */
 .unit-toggle {
   display: flex;
   justify-content: center;
