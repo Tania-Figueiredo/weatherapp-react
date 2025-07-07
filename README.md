@@ -1,38 +1,44 @@
 # 🌤️ Weather App in React – FreshStart Dev
 
-This project is a React adaptation of the original Weather App created during the SheCodes workshops. The goal was to convert a fully functional HTML/CSS/JavaScript app into a modern, component-based React application, while maintaining the original visual structure and user experience.
+A weather forecast app built by Tânia Figueiredo using React, as part of the final adaptation of the SheCodes workshop. The goal was to recreate a fully working HTML/CSS/JS weather app inside a React environment while keeping the original look and feel.
 
 ## 🔧 Technologies Used
 
 - **React**
 - **Axios**
 - **JavaScript (ES6+)**
-- **CSS (custom styling based on original)**
+- **CSS3 (fully customized)**
 - **SheCodes Weather API**
-- **Netlify (for deployment)**
+- **Netlify (deployment)**
 
 ## ✨ Features
 
-- 🔍 City-based weather search
-- 🌡️ Current temperature, humidity, wind, and weather description
-- 🗓️ Date and time formatting
-- 📅 5-day weather forecast with icons
-- 🌓 Dark mode toggle (with logo switch)
-- ✅ Responsive design
-- 🔗 Links to GitHub and Netlify for transparency and deployment
+- 🔍 City search with dynamic loading
+- 🌡️ Current temperature (°C/°F), humidity, wind, and weather description
+- 🗓️ Real-time date and time display
+- 📅 5-day forecast with custom weather icons
+- 🌓 Light/Dark mode toggle with logo swap
+- 📱 Fully responsive design
+- 🔗 GitHub and Netlify integration
 
-## 📦 Structure
+## 🗂️ Component Structure
 
-The app is broken down into the following components:
-
-- `App.js`: Wraps the entire application, manages global state and dark mode.
-- `Header.js`: Contains the logo, search form, and dark mode toggle.
-- `Main.js`: Handles API requests, displays current weather and forecast.
-- `Footer.js`: Credits, GitHub and Netlify links.
-- `App.css`: Styling adapted from the original HTML/CSS version.
-- `images/logo.png`: Custom logo (also changes in dark mode).
+- `App.js` → Handles global theme and component layout
+- `Header.js` → Logo, search form, and dark mode toggle
+- `Main.js` → Fetches API data and displays current and forecast weather
+- `Footer.js` → Footer with credits and links
+- `App.css` → Custom styling based on the original SheCodes layout
+- `images/logo.png` → Custom brand logo (switches on dark mode)
 
 ## 📺 Preview
 
-🔗 **Live Project**: [https://reactweatherappfreshstartdev.netlify.app/](https://reactweatherappfreshstartdev.netlify.app/)  
+🔗 **Live Demo**: [https://reactweatherappfreshstartdev.netlify.app/](https://reactweatherappfreshstartdev.netlify.app/)  
 🔗 **GitHub Repo**: [https://github.com/Tania-Figueiredo/weatherapp-react](https://github.com/Tania-Figueiredo/weatherapp-react)
+
+## 🚀 Run Locally
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/Tania-Figueiredo/weatherapp-react.gits
+```

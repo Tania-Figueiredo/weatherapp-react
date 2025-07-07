@@ -8,6 +8,7 @@ export default function Main({ city }) {
   const [description, setDescription] = useState("");
   const [iconUrl, setIconUrl] = useState("");
   const [forecast, setForecast] = useState([]);
+  const [unit, setUnit] = useState("celsius");
 
   const apiKey = "9f54b409ed45da3co73e59fb34ea8t3b";
 
@@ -30,12 +31,14 @@ export default function Main({ city }) {
       "Saturday",
     ];
     const day = days[now.getDay()];
+    const date = now.getDate();
+    const month = now.toLocaleString("default", { month: "short" });
     const hours = now.getHours().toString().padStart(2, "0");
     const minutes = now.getMinutes().toString().padStart(2, "0");
 
     const currentDateElement = document.getElementById("current-date");
     if (currentDateElement) {
-      currentDateElement.innerHTML = `${day} ${hours}:${minutes}`;
+      currentDateElement.innerHTML = `${day}, ${date} ${month} ${hours}:${minutes}`;
     }
   }
 
@@ -55,6 +58,10 @@ export default function Main({ city }) {
     });
   }
 
+  function convertTemperature(temp) {
+    return unit === "celsius" ? temp : Math.round((temp * 9) / 5 + 32);
+  }
+
   function formatDay(timestamp) {
     const date = new Date(timestamp * 1000);
     const days = [
@@ -69,6 +76,10 @@ export default function Main({ city }) {
     return days[date.getDay()];
   }
 
+  function toggleUnit() {
+    setUnit((prevUnit) => (prevUnit === "celsius" ? "fahrenheit" : "celsius"));
+  }
+
   return (
     <main>
       <time className="date" id="current-date"></time>
@@ -78,7 +89,11 @@ export default function Main({ city }) {
           <div className="weather-left">
             <h1 id="current-city">{city}</h1>
             <p className="temperature" id="temperature">
-              {temperature !== null ? `${temperature}°` : "--"}
+              {temperature !== null
+                ? `${convertTemperature(temperature)}°${
+                    unit === "celsius" ? "C" : "F"
+                  }`
+                : "--"}
             </p>
           </div>
           <div className="weather-center">
@@ -98,6 +113,13 @@ export default function Main({ city }) {
         </div>
       </section>
 
+      {/* 🔁 Botão de conversão */}
+      <div className="unit-toggle">
+        <button onClick={toggleUnit} className="toggle-unit">
+          Show in °{unit === "celsius" ? "F" : "C"}
+        </button>
+      </div>
+
       <hr />
 
       <section className="forecast">
@@ -112,7 +134,8 @@ export default function Main({ city }) {
                 width="48"
               />
               <p className="forecast-temperature">
-                {Math.round(day.temperature.maximum)}°
+                {convertTemperature(Math.round(day.temperature.maximum))}°
+                {unit === "celsius" ? "C" : "F"}
               </p>
             </li>
           ))}
